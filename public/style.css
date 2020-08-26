@@ -1,0 +1,49 @@
+h1 {
+  color: red;
+  font-family: "Russo One", sans-serif;
+  text-align: center;
+}
+section {
+  width: 300px;
+  margin: 0 auto;
+}
+.up,
+.down {
+  height: 200px;
+
+  border: 1px solid black;
+  border-radius: 5px;
+}
+.up {
+  overflow-y: scroll;
+  font-family: sans-serif;
+  padding-top: 20px;
+}
+.down {
+  margin-top: 5px;
+}
+.data {
+  width: 60%;
+  margin:0 auto 10px;
+}
+
+form {
+  width: 80%;
+  margin: 20px auto 0;
+}
+
+input {
+  height: 40px;
+  border: 1px solid red;
+  border-radius: 5px;
+}
+
+button {
+    height: 40px;
+    border-radius:  5px;
+    background-color: lightblue;
+}
+
+input:focus {
+  outline-width: 0;
+}
