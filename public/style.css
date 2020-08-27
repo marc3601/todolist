@@ -9,17 +9,17 @@ section {
 }
 .up,
 .down {
-  height: 200px;
-
   border: 1px solid black;
   border-radius: 5px;
 }
 .up {
+  height: 400px;
   overflow-y: scroll;
   font-family: sans-serif;
   padding-top: 20px;
 }
 .down {
+  height: 200px;
   margin-top: 5px;
 }
 .data {
