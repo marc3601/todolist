@@ -15,7 +15,7 @@ const createDataContainer = (data, n, container) => {
 const handleUpload = (e) => {
   e.preventDefault();
   data.name = input.value;
-  fetch("http://localhost:3000/catty", {
+  fetch("https://testowy123.herokuapp.com/catty", {
     method: "POST", // or 'PUT'
     headers: {
       "Content-Type": "application/json",
@@ -32,7 +32,7 @@ const handleUpload = (e) => {
 };
 
 const downloadData = () => {
-  fetch("http://localhost:3000/cat")
+  fetch("https://testowy123.herokuapp.com/cat")
     .then((response) => response.json())
     .then((data) => {
       createDataContainer(data, data.length, display);
