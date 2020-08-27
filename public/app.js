@@ -8,7 +8,11 @@ const createDataContainer = (data, n, container) => {
     const p = document.createElement("p");
     p.classList.add("data");
     container.appendChild(p);
+    const t = document.createElement("pre");
+    t.classList.add("time");
+    container.appendChild(t);
     p.textContent = data[i].name;
+    t.textContent = `Entry added at ${data[i].time}`;
   }
 };
 
