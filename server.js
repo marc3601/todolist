@@ -5,11 +5,13 @@ const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
+var enforce = require('express-sslify');
 let data;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(enforce.HTTPS({ trustProtoHeader: true }))
 
 //DATABASE CONNECTION ------------------------------------------
 const mongoUrl =
