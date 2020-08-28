@@ -22,6 +22,11 @@ section {
   height: 200px;
   margin-top: 5px;
 }
+.view {
+  text-align: center;
+  font-family: sans-serif;
+  margin-top: 5px;
+}
 .data {
   width: 60%;
   margin: 0 auto 10px;

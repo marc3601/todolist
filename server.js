@@ -6,7 +6,6 @@ const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
 var enforce = require('express-sslify');
-let data;
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -32,10 +31,42 @@ const kittySchema = new mongoose.Schema({
 });
 const Kitten = mongoose.model("Kitten", kittySchema);
 
+const viewSchema = new mongoose.Schema({
+  count: Number,
+});
+const View = mongoose.model("View", viewSchema);
+
 //ROUTES --------------------------------------------------------
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "/index.html"));
 });
+
+app.get("/views", (req, res) => {
+  const filter = { _id: "5f484119c6df5427883430dc" };
+
+  //read and save view count
+  const p = new Promise((resolve, reject) => {
+    View.findOne(filter, (err, doc) => {
+      if (doc) {
+        resolve(console.log(doc.count));
+        const update = { count: doc.count + 1};
+        res.send(update)
+        View.findOneAndUpdate(
+          filter,
+          update,
+          { useFindAndModify: false },
+          (err) => {
+            if (err) return console.error(err);
+          }
+        );
+      } else {
+        reject("Failed " + err);
+      }
+    });
+  });
+});
+
 
 app.get("/cat", (req, res) => {
   let p = new Promise((resolve, reject) => {
@@ -53,6 +84,7 @@ app.get("/cat", (req, res) => {
     console.log("Error: " + data);
   });
 });
+
 
 app.post("/catty", (req, res) => {
   const clck = new Date().toLocaleTimeString();
