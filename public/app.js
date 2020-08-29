@@ -65,9 +65,11 @@ downloadData();
 
 themeCheck.addEventListener('click', ()=>{
   if (themeCheck.checked === true) {
-    document.querySelector('body').classList.add('body__dark')
+    document.querySelector('body').classList.add('body__dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1877de");
   } else {
-    document.querySelector('body').classList.remove('body__dark')
+    document.querySelector('body').classList.remove('body__dark');
+    document.querySelector('meta[name="theme-color"]').setAttribute("content", "white");
   }
 })
 button.addEventListener("click", handleUpload);
