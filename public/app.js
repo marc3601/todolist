@@ -1,5 +1,5 @@
 const button = document.querySelector("button");
-const input = document.querySelector("input");
+const input = document.querySelector(".userEntry");
 const display = document.querySelector(".up");
 const views = document.querySelector(".view");
 const themeCheck = document.querySelector('.check');
