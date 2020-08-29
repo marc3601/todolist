@@ -2,6 +2,7 @@ const button = document.querySelector("button");
 const input = document.querySelector("input");
 const display = document.querySelector(".up");
 const views = document.querySelector(".view");
+const themeCheck = document.querySelector('.check');
 const data = { name: "default" };
 
 const cattyApi = "https://testowy123.herokuapp.com/catty";
@@ -12,7 +13,7 @@ const downloadViews = () => {
   fetch(viewApi)
     .then((response) => response.json())
     .then((view) => {
-      views.textContent = `Liczba wyświetleń: ${view.count}`;
+      views.textContent = `View count: ${view.count}`;
     });
 };
 downloadViews()
@@ -62,7 +63,11 @@ const downloadData = () => {
 };
 downloadData();
 
-
-
-
+themeCheck.addEventListener('click', ()=>{
+  if (themeCheck.checked === true) {
+    document.querySelector('body').classList.add('body__dark')
+  } else {
+    document.querySelector('body').classList.remove('body__dark')
+  }
+})
 button.addEventListener("click", handleUpload);

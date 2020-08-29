@@ -22,7 +22,7 @@ mongoose.connect(mongoUrl, {
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error:"));
 db.once("open", function () {
-  console.log("online");
+  console.log("db connected");
 });
 
 const kittySchema = new mongoose.Schema({
@@ -66,6 +66,7 @@ app.get("/views", (req, res) => {
     });
   });
 });
+
 
 
 app.get("/cat", (req, res) => {
