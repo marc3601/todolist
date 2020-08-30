@@ -45,7 +45,11 @@ const handleUpload = (e) => {
       .then((response) => response.json())
       .then((data) => {
         button.innerText = data.result;
+        button.style.boxShadow = "inset 0px 39px 0px -24px #47d53e"
+        button.style.backgroundColor = "#30c226"
         setTimeout(() => {
+          button.style.boxShadow = "inset 0px 39px 0px -24px #e67a73"
+          button.style.backgroundColor = "#e4685d"
           button.innerText = "Send";
         }, 2000);
       })
