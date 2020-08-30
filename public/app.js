@@ -2,7 +2,7 @@ const button = document.querySelector("button");
 const input = document.querySelector(".userEntry");
 const display = document.querySelector(".up");
 const views = document.querySelector(".view");
-const themeCheck = document.querySelector('.check');
+const themeCheck = document.querySelector(".check");
 const data = { name: "default" };
 
 const cattyApi = "https://testowy123.herokuapp.com/catty";
@@ -16,7 +16,7 @@ const downloadViews = () => {
       views.textContent = `View count: ${view.count}`;
     });
 };
-downloadViews()
+downloadViews();
 
 const createDataContainer = (data, n, container) => {
   for (i = 0; i < n; i++) {
@@ -44,7 +44,10 @@ const handleUpload = (e) => {
     })
       .then((response) => response.json())
       .then((data) => {
-        console.log("Success:", data);
+        button.innerText = data.result;
+        setTimeout(() => {
+          button.innerText = "Send";
+        }, 2000);
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -63,13 +66,17 @@ const downloadData = () => {
 };
 downloadData();
 
-themeCheck.addEventListener('click', ()=>{
+themeCheck.addEventListener("click", () => {
   if (themeCheck.checked === true) {
-    document.querySelector('body').classList.add('body__dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute("content", "#1877de");
+    document.querySelector("body").classList.add("body__dark");
+    document
+      .querySelector('meta[name="theme-color"]')
+      .setAttribute("content", "#1877de");
   } else {
-    document.querySelector('body').classList.remove('body__dark');
-    document.querySelector('meta[name="theme-color"]').setAttribute("content", "white");
+    document.querySelector("body").classList.remove("body__dark");
+    document
+      .querySelector('meta[name="theme-color"]')
+      .setAttribute("content", "white");
   }
-})
+});
 button.addEventListener("click", handleUpload);

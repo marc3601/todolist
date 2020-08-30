@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const mongoose = require("mongoose");
 const path = require("path");
 const bodyParser = require("body-parser");
-var enforce = require('express-sslify');
+const enforce = require('express-sslify');
 
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
