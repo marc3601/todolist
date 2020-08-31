@@ -34,6 +34,19 @@ section {
   padding-top: 10px;
   text-align: center;
 }
+.delete {
+  position: relative;
+  text-align: right;
+  margin-right: 10px;
+  color: red;
+}
+.material-icons {
+  position: relative;
+  cursor: pointer;
+  right: 20px;
+  font-size: 1.8em;
+  user-select: none;
+}
 .info {
   font-family: sans-serif;
 }
@@ -88,7 +101,7 @@ input {
   margin: 10px 0 20px;
   text-decoration: none;
   text-shadow: 0px 1px 0px #b23e35;
-  transition: .2s;
+  transition: 0.2s;
 }
 .submit:hover {
   background-color: #eb675e;

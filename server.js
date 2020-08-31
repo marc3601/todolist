@@ -50,8 +50,8 @@ app.get("/views", (req, res) => {
     View.findOne(filter, (err, doc) => {
       if (doc) {
         resolve(console.log(doc.count));
-        const update = { count: doc.count + 1};
-        res.send(update)
+        const update = { count: doc.count + 1 };
+        res.send(update);
         View.findOneAndUpdate(
           filter,
           update,
@@ -66,8 +66,6 @@ app.get("/views", (req, res) => {
     });
   });
 });
-
-
 
 app.get("/cat", (req, res) => {
   let p = new Promise((resolve, reject) => {
@@ -86,7 +84,6 @@ app.get("/cat", (req, res) => {
   });
 });
 
-
 app.post("/catty", (req, res) => {
   const clck = new Date().toLocaleTimeString();
   req.body.time = clck;
@@ -96,6 +93,20 @@ app.post("/catty", (req, res) => {
     console.log("saved");
   });
   res.send({ result: "Saved to database!" });
+});
+
+app.post("/delete", (req, res) => {
+  const filter = {_id: req.body.value};
+  let p = new Promise((resolve, reject) => {
+    Kitten.findByIdAndDelete(filter, (err, deleted) => {
+      if (deleted) {
+        resolve(console.log(`Item deleted`));
+      } else if (err) {
+        reject("Failed " + err);
+      }
+    })
+    res.send({ result: "Delete sucess!" });
+  });
 });
 
 app.listen(port, () => {
