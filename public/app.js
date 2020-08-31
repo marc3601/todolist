@@ -4,7 +4,7 @@ const display = document.querySelector(".up");
 const views = document.querySelector(".view");
 const themeCheck = document.querySelector(".check");
 const data = { name: "default" };
-const id = {value: "default"}
+const id = { value: "default" };
 
 const cattyApi = "https://testowy123.herokuapp.com/catty";
 const catApi = "https://testowy123.herokuapp.com/cat";
@@ -40,7 +40,7 @@ const createDataContainer = (data, n, parent) => {
     t.textContent = `Entry added at ${data[i].time}`;
 
     del.firstChild.addEventListener("click", (e) => {
-      id.value = e.target.parentNode.parentNode.id
+      id.value = e.target.parentNode.parentNode.id;
       fetch(deleteApi, {
         method: "POST", // or 'PUT'
         headers: {
@@ -48,14 +48,14 @@ const createDataContainer = (data, n, parent) => {
         },
         body: JSON.stringify(id),
       })
-      .then((response) => response.json())
-      .then((data)=> {
-        console.log(data);
-        while (display.lastElementChild) {
-          display.removeChild(display.lastElementChild);
-        }
-        downloadData()
-      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log(data);
+          while (display.lastElementChild) {
+            display.removeChild(display.lastElementChild);
+          }
+          downloadData();
+        });
     });
   }
 };
@@ -76,6 +76,10 @@ const handleUpload = (e) => {
         button.innerText = data.result;
         button.style.boxShadow = "inset 0px 39px 0px -24px #47d53e";
         button.style.backgroundColor = "#30c226";
+        while (display.lastElementChild) {
+          display.removeChild(display.lastElementChild);
+        }
+        downloadData();
         setTimeout(() => {
           button.removeAttribute("style");
           button.innerText = "Send";
