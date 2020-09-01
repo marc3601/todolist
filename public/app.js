@@ -97,7 +97,7 @@ const downloadData = () => {
   fetch(catApi)
     .then((response) => response.json())
     .then((data) => {
-      createDataContainer(data, data.length, display);
+      createDataContainer(data.reverse(), data.length, display);
     });
 };
 downloadData();
