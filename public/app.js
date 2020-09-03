@@ -84,6 +84,7 @@ const handleUpload = (e) => {
           button.removeAttribute("style");
           button.innerText = "Send";
         }, 2000);
+        input.value = "";
       })
       .catch((error) => {
         console.error("Error:", error);
